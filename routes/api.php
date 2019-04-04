@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('/admin')->group(function(){
+    Route::get('/roles', 'RolesController@index');
+    Route::put('/role/{id}', 'RolesController@store');
+    Route::post('/add-role', 'RolesController@store');
+    Route::delete('/delete-role/{id}', 'RolesController@destroy');
+});

@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::prefix('/admin')->group(function(){
+    Route::get('/home', 'BPagesController@dashboard')->name('Home');
+    Route::get('/roles', 'BPagesController@roles')->name('All Roles');
+    Route::get('/role/{id}', 'BPagesController@createrole')->name('Update Role');
+    Route::get('/add-role', 'BPagesController@createrole')->name('Create Role');
+});
